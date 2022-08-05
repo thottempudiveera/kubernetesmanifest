@@ -18,7 +18,7 @@ spec:
         app: springboot
     spec:
       containers:
-      - image: veerathottempudi/test:6
+      - image: veerathottempudi/test:2
         name: springboot
         resources: {}
 status: {}
