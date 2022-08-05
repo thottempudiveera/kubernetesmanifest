@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: springboot
+  name: springboot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springboot
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: springboot
+    spec:
+      containers:
+      - image: veerathottempudi/test:6
+        name: springboot
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service
+  labels:
+    app: lb-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 5000
+  selector:
+    app: springboot
